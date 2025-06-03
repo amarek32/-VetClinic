@@ -1,0 +1,62 @@
+﻿@model Projekt.Models.Zwierze
+
+@{
+    ViewBag.Title = "Szczegóły zwierzęcia";
+}
+
+<h2>Szczegóły zwierzęcia</h2>
+
+<div>
+    <h4>Zwierzę</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Właściciel</dt>
+        <dd>@Model.Klient.Imie @Model.Klient.Nazwisko</dd>
+
+        <dt>Imię</dt>
+        <dd>@Html.DisplayFor(model => model.Imie)</dd>
+
+        <dt>Gatunek</dt>
+        <dd>@Html.DisplayFor(model => model.Gatunek)</dd>
+
+        <dt>Rasa</dt>
+        <dd>@Html.DisplayFor(model => model.Rasa)</dd>
+
+        <dt>Data urodzenia</dt>
+        <dd>@Html.DisplayFor(model => model.DataUrodzenia)</dd>
+    </dl>
+</div>
+
+<hr />
+
+<h4>Historia wizyt</h4>
+
+@if (Model.Wizyty != null && Model.Wizyty.Any())
+{
+    <table class="table">
+        <tr>
+            <th>Data</th>
+            <th>Opis</th>
+            <th>Weterynarz</th>
+            <th></th>
+        </tr>
+        @foreach (var wizyta in Model.Wizyty)
+        {
+            <tr>
+                <td>@wizyta.Data.ToShortDateString()</td>
+                <td>@wizyta.Opis</td>
+                <td>@(wizyta.Weterynarz != null ? wizyta.Weterynarz.Imie + " " + wizyta.Weterynarz.Nazwisko : "-")</td>
+                <td>@Html.ActionLink("Szczegóły", "Details", "Wizytas", new { id = wizyta.Id }, null)</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Brak wizyt przypisanych do tego zwierzęcia.</p>
+}
+
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Powrót do listy", "Index")
+</p>
