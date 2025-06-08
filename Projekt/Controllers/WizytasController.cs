@@ -39,7 +39,15 @@ namespace Projekt.Controllers
         // GET: Wizytas/Create
         public ActionResult Create()
         {
-            ViewBag.WeterynarzId = new SelectList(db.Weterynarze, "Id", "Imie");
+            ViewBag.WeterynarzId = new SelectList(
+            db.Weterynarze.ToList()
+             .Select(w => new {
+                Id = w.Id,
+                ImieNazwisko = w.Imie + " " + w.Nazwisko
+                }),
+                 "Id", "ImieNazwisko"
+            );
+
             ViewBag.ZwierzeId = new SelectList(db.Zwierzeta, "Id", "Imie");
             return View();
         }

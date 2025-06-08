@@ -7,16 +7,8 @@
 <h2>Lista klientów</h2>
 
 <p>
-    @Html.ActionLink("Dodaj klienta", "Create")
+    @Html.ActionLink("Dodaj klienta", "Create", null, new { @class = "btn btn-primary" })
 </p>
-
-<p>
-    @Html.ActionLink("Zwierzęta", "Index", "Zwierzesc") |
-    @Html.ActionLink("Wizyty", "Index", "Wizytas") |
-    @Html.ActionLink("Weterynarze", "Index", "Weterynarzs") |
-    @Html.ActionLink("Leczenia", "Index", "Leczenies")
-</p>
-
 <table class="table">
     <thead>
         <tr>

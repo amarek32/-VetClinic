@@ -44,7 +44,16 @@ namespace Projekt.Controllers
         // GET: Zwierzes/Create
         public ActionResult Create()
         {
-            ViewBag.KlientId = new SelectList(db.Klienci, "Id", "Nazwisko");
+            ViewBag.KlientId = new SelectList(
+                db.Klienci
+                .ToList()
+                .Select(k => new
+                {
+                    Id = k.Id,
+                    ImieNazwisko = k.Imie + " " + k.Nazwisko
+                }),
+            "Id", "ImieNazwisko"
+            );
             return View();
         }
 

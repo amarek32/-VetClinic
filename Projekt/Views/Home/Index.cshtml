@@ -1,33 +1,57 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Strona główna";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<h2>Panel zarządzania kliniką</h2>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Klienci</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.LiczbaKlientow</h5>
+                <a href="@Url.Action("Index", "Klients")" class="btn btn-light">Przejdź</a>
+            </div>
+        </div>
     </div>
-</main>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Zwierzęta</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.LiczbaZwierzat</h5>
+                <a href="@Url.Action("Index", "Zwierzes")" class="btn btn-light">Przejdź</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Wizyty</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.LiczbaWizyt</h5>
+                <a href="@Url.Action("Index", "Wizytas")" class="btn btn-light">Przejdź</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-header">Leczenia</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.LiczbaLeczen</h5>
+                <a href="@Url.Action("Index", "Leczenies")" class="btn btn-light">Przejdź</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">Weterynarze</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.LiczbaWeterynarzy</h5>
+                <a href="@Url.Action("Index", "Weterynarzs")" class="btn btn-light">Przejdź</a>
+            </div>
+        </div>
+    </div>
+</div>
