@@ -1,15 +1,237 @@
 ﻿@{
-    ViewBag.Title = "Strona główna";
+        ViewBag.Title = "Strona główna";
 }
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f8ff; /* Delikatny kolor bazowy */
+        background-image: url('https://previews.123rf.com/images/igoun/igoun1902/igoun190200070/120383308-%C5%82apa-psa-wz%C3%B3r-wektor-%C5%9Blad-kotek-szczeniak-dach%C3%B3wka-niebieskie-t%C5%82o-powt%C3%B3rzy%C4%87-tapeta-kresk%C3%B3wka-na-bia%C5%82.jpg'); /* Tło z łapkami */
+        background-repeat: repeat;
+        background-size: 150px; /* Rozmiar pojedynczej łapki w tle. Możesz dostosować. */
+        color: #333;
+    }
+
+    /* Usunięto style dla .main-nav, .main-nav .logo, .main-nav ul, .main-nav ul li, .main-nav ul li a, ponieważ ten pasek jest teraz w _Layout.cshtml */
+
+    /* Styles for the circular image container */
+    .header-image-container {
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 40px auto;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        border: 8px solid #a7d9f2;
+        cursor: pointer;
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        margin-top: 50px; /* Dodano margines, aby nie przylegało do paska nawigacyjnego z _Layout.cshtml */
+    }
+
+        /* Klasa CSS dla animacji obrazka - dodawana przez JavaScript */
+        .header-image-container.animated {
+            animation: zoomPulse 3s infinite alternate; /* Animacja pulsowania */
+        }
+
+    .header-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Ten h2 to "Panel zarządzania kliniką" pod zdjęciem */
+    h2 {
+        text-align: center;
+        color: #0056b3;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+        letter-spacing: 1px;
+        font-size: 3.5em;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+        }
+
+    .card-header {
+        background: linear-gradient(to right, #6ec6ff, #2196f3);
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        padding: 20px;
+        border-bottom: none;
+        position: relative;
+        z-index: 2;
+    }
+
+    .card-body {
+        background-color: #f7faff;
+        color: #1a237e;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-title {
+        font-size: 2.8em;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #0056b3;
+        animation: fadeIn 1s ease-out;
+    }
+
+    .btn-light {
+        background-color: #79c8f2;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .btn-light:hover {
+            background-color: #4da6e3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+    .card.bg-primary .card-header {
+        background: linear-gradient(to right, #6bb9f0, #2196f3);
+    }
+
+    .card.bg-success .card-header {
+        background: linear-gradient(to right, #81c784, #4caf50);
+    }
+
+    .card.bg-warning .card-header {
+        background: linear-gradient(to right, #ffb300, #ff8f00);
+    }
+
+    .card.bg-info .card-header {
+        background: linear-gradient(to right, #4dd0e1, #00bcd4);
+    }
+
+    .card.bg-secondary .card-header {
+        background: linear-gradient(to right, #a1887f, #8d6e63);
+    }
+
+    .centered-card {
+        margin: 0 auto 30px auto;
+        float: none;
+    }
+
+    .visits-card,
+    .treatments-card {
+        max-width: 650px;
+    }
+
+        .visits-card .card-title,
+        .treatments-card .card-title {
+            font-size: 4.5em;
+        }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes bounceIn {
+        0% {
+            transform: scale(0.1);
+            opacity: 0;
+        }
+
+        60% {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @@keyframes zoomPulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        50% {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+    }
+</style>
+
+<div class="header-image-container" id="animatedImage">
+    <img src="https://img.freepik.com/darmowe-zdjecie/kolaz-ladny-zwierzak-na-bialym-tle_23-2150007407.jpg?semt=ais_hybrid&w=740" alt="Clinic Header Image" class="header-image" />
+</div>
 
 <h2>Panel zarządzania kliniką</h2>
 
 <div class="row" style="margin-top: 20px;">
+    <div class="col-md-6 centered-card visits-card">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Wizyty</div>
+            <div class="card-body">
+                <h5 class="card-title" style="animation: bounceIn 1s ease-out;">@ViewBag.LiczbaWizyt</h5>
+                <a href="@Url.Action("Index", "Wizytas")" class="btn btn-light">Przejdź do Wizyt</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 centered-card treatments-card">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-header">Leczenia</div>
+            <div class="card-body">
+                <h5 class="card-title" style="animation: bounceIn 1s ease-out 0.2s;">@ViewBag.LiczbaLeczen</h5>
+                <a href="@Url.Action("Index", "Leczenies")" class="btn btn-light">Przejdź do Leczeń</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 20px; justify-content: center;">
     <div class="col-md-3">
         <div class="card text-white bg-primary mb-3">
             <div class="card-header">Klienci</div>
             <div class="card-body">
-                <h5 class="card-title">@ViewBag.LiczbaKlientow</h5>
+                <h5 class="card-title" style="animation: fadeIn 1s ease-out 0.4s;">@ViewBag.LiczbaKlientow</h5>
                 <a href="@Url.Action("Index", "Klients")" class="btn btn-light">Przejdź</a>
             </div>
         </div>
@@ -19,28 +241,8 @@
         <div class="card text-white bg-success mb-3">
             <div class="card-header">Zwierzęta</div>
             <div class="card-body">
-                <h5 class="card-title">@ViewBag.LiczbaZwierzat</h5>
+                <h5 class="card-title" style="animation: fadeIn 1s ease-out 0.6s;">@ViewBag.LiczbaZwierzat</h5>
                 <a href="@Url.Action("Index", "Zwierzes")" class="btn btn-light">Przejdź</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="card text-white bg-warning mb-3">
-            <div class="card-header">Wizyty</div>
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.LiczbaWizyt</h5>
-                <a href="@Url.Action("Index", "Wizytas")" class="btn btn-light">Przejdź</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="card text-white bg-info mb-3">
-            <div class="card-header">Leczenia</div>
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.LiczbaLeczen</h5>
-                <a href="@Url.Action("Index", "Leczenies")" class="btn btn-light">Przejdź</a>
             </div>
         </div>
     </div>
@@ -49,9 +251,25 @@
         <div class="card text-white bg-secondary mb-3">
             <div class="card-header">Weterynarze</div>
             <div class="card-body">
-                <h5 class="card-title">@ViewBag.LiczbaWeterynarzy</h5>
+                <h5 class="card-title" style="animation: fadeIn 1s ease-out 0.8s;">@ViewBag.LiczbaWeterynarzy</h5>
                 <a href="@Url.Action("Index", "Weterynarzs")" class="btn btn-light">Przejdź</a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageContainer = document.getElementById('animatedImage');
+
+        if (imageContainer) {
+            imageContainer.addEventListener('mouseenter', function () {
+                imageContainer.classList.add('animated');
+            });
+
+            imageContainer.addEventListener('mouseleave', function () {
+                imageContainer.classList.remove('animated');
+            });
+        }
+    });
+</script>

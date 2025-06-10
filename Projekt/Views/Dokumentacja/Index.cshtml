@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "Dokumentacja";
+}
+
+<h2>📘 Instrukcja obsługi aplikacji „Klinika Weterynaryjna”</h2>
+
+<p>
+    Aplikacja webowa umożliwia zarządzanie klientami, zwierzętami, weterynarzami, wizytami oraz leczeniem w klinice weterynaryjnej. Poniżej znajduje się opis wszystkich funkcjonalności dostępnych w systemie.
+</p>
+
+<hr />
+
+<h3>🏠 Strona główna (Panel zarządzania)</h3>
+<p>
+    Po uruchomieniu aplikacji użytkownik zostaje przekierowany na stronę główną. Znajduje się tam przejrzysty panel z graficznymi kafelkami prezentującymi liczbę elementów w każdej z sekcji:
+</p>
+<ul>
+    <li><strong>Wizyty</strong></li>
+    <li><strong>Leczenia</strong></li>
+    <li><strong>Klienci</strong></li>
+    <li><strong>Zwierzęta</strong></li>
+    <li><strong>Weterynarze</strong></li>
+</ul>
+<p>
+    Każdy kafelek zawiera przycisk <strong>„Przejdź”</strong>, który przenosi do odpowiedniej zakładki, umożliwiając zarządzanie daną kategorią danych.
+</p>
+
+<hr />
+
+<h3>👥 Zakładka „Klienci”</h3>
+<p>
+    W tej sekcji znajduje się lista klientów kliniki – właścicieli zwierząt. Każdy wpis zawiera:
+</p>
+<ul>
+    <li>Imię</li>
+    <li>Nazwisko</li>
+    <li>Adres e-mail</li>
+    <li>Numer telefonu</li>
+</ul>
+<p>
+    Dostępne operacje:
+</p>
+<ul>
+    <li><strong>Dodaj klienta</strong> – formularz umożliwia wprowadzenie nowego klienta do systemu.</li>
+    <li><strong>Edytuj</strong> – umożliwia modyfikację danych klienta.</li>
+    <li><strong>Szczegóły</strong> – wyświetla podsumowanie informacji o kliencie.</li>
+    <li><strong>Usuń</strong> – trwałe usunięcie klienta z bazy danych.</li>
+</ul>
+
+<hr />
+
+<h3>🐾 Zakładka „Zwierzęta”</h3>
+<p>
+    Sekcja zawiera listę zwierząt przypisanych do klientów. Wyświetlane informacje:
+</p>
+<ul>
+    <li>Właściciel (imię i nazwisko klienta)</li>
+    <li>Imię zwierzęcia</li>
+    <li>Gatunek (np. pies, kot)</li>
+    <li>Rasa</li>
+    <li>Data urodzenia</li>
+</ul>
+<p>
+    Operacje dostępne przy każdym zwierzęciu:
+</p>
+<ul>
+    <li><strong>Dodaj nowe zwierzę</strong> – wybór właściciela oraz danych zwierzęcia.</li>
+    <li><strong>Edytuj</strong> – aktualizacja danych zwierzęcia.</li>
+    <li><strong>Szczegóły</strong> – przegląd wszystkich danych zwierzęcia oraz jego wizyt.</li>
+    <li><strong>Usuń</strong> – usunięcie zwierzęcia z systemu.</li>
+</ul>
+
+<hr />
+
+<h3>👨‍⚕️ Zakładka „Weterynarze”</h3>
+<p>
+    Zawiera listę pracujących weterynarzy z danymi:
+</p>
+<ul>
+    <li>Imię</li>
+    <li>Nazwisko</li>
+    <li>Specjalizacja (np. chirurg, internista)</li>
+</ul>
+<p>
+    Dostępne funkcje:
+</p>
+<ul>
+    <li><strong>Dodaj</strong> – formularz dodania nowego weterynarza.</li>
+    <li><strong>Edytuj</strong> – zmiana imienia, nazwiska lub specjalizacji.</li>
+    <li><strong>Szczegóły</strong> – wyświetlenie szczegółowych danych.</li>
+    <li><strong>Usuń</strong> – usunięcie weterynarza z bazy danych.</li>
+</ul>
+
+<hr />
+
+<h3>📅 Zakładka „Wizyty”</h3>
+<p>
+    W tej sekcji można zarządzać harmonogramem wizyt. Każdy rekord zawiera:
+</p>
+<ul>
+    <li>Weterynarz prowadzący wizytę (imię i nazwisko)</li>
+    <li>Imię zwierzęcia</li>
+    <li>Data wizyty (bez godziny)</li>
+    <li>Opis (np. „badanie kontrolne”)</li>
+</ul>
+<p>
+    Możliwe działania:
+</p>
+<ul>
+    <li><strong>Dodaj wizytę</strong> – wybór zwierzęcia, weterynarza, daty i opisu.</li>
+    <li><strong>Edytuj</strong> – aktualizacja istniejących danych wizyty.</li>
+    <li><strong>Szczegóły</strong> – podgląd danych wizyty.</li>
+    <li><strong>Usuń</strong> – trwałe usunięcie wpisu z harmonogramu.</li>
+</ul>
+
+<hr />
+
+<h3>💊 Zakładka „Leczenia”</h3>
+<p>
+    Zawiera informacje o wykonanych zabiegach i leczeniach. Dane obejmują:
+</p>
+<ul>
+    <li>Opis zabiegu</li>
+    <li>Szczegóły wykonania (np. „pobranie krwi”)</li>
+    <li>Zastosowany lek</li>
+    <li>Koszt leczenia (zł)</li>
+</ul>
+<p>
+    Możliwe działania:
+</p>
+<ul>
+    <li><strong>Dodaj leczenie</strong> – nowy wpis z opisem, lekiem i kosztem.</li>
+    <li><strong>Edytuj</strong> – zmiana informacji o leczeniu.</li>
+    <li><strong>Szczegóły</strong> – podgląd pełnych danych.</li>
+    <li><strong>Usuń</strong> – usunięcie rekordu leczenia.</li>
+</ul>
+
+<hr />
+
+<footer style="margin-top: 30px;">
+    <p><em>Dokumentacja użytkownika | System zarządzania kliniką weterynaryjną © 2025</em></p>
+</footer>
