@@ -1,64 +1,42 @@
 ﻿@model Projekt.Models.Zwierze
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Usuń zwierzę";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Zwierze</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Klient.Imie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Klient.Imie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gatunek)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gatunek)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rasa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rasa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataUrodzenia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataUrodzenia)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="container mt-4">
+    <div class="card shadow-sm border-danger">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0">❌ Potwierdzenie usunięcia zwierzęcia</h3>
         </div>
-    }
+        <div class="card-body">
+            <p class="text-danger fw-bold">Czy na pewno chcesz usunąć to zwierzę?</p>
+
+            <dl class="row">
+                <dt class="col-sm-3">Właściciel</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Klient.Imie)</dd>
+
+                <dt class="col-sm-3">Imię</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Imie)</dd>
+
+                <dt class="col-sm-3">Gatunek</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Gatunek)</dd>
+
+                <dt class="col-sm-3">Rasa</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Rasa)</dd>
+
+                <dt class="col-sm-3">Data urodzenia</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.DataUrodzenia)</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="text-end mt-4">
+                    <input type="submit" value="🗑️ Usuń" class="btn btn-danger me-2" />
+                    @Html.ActionLink("↩️ Anuluj", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>
 </div>

@@ -1,50 +1,32 @@
 ﻿@model Projekt.Models.Wizyta
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły wizyty";
 }
 
-<h2>Details</h2>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Szczegóły wizyty</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Weterynarz</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Weterynarz.Imie)</dd>
 
-<div>
-    <h4>Wizyta</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Weterynarz.Imie)
-        </dt>
+                <dt class="col-sm-3">Zwierzę</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Zwierze.Imie)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Weterynarz.Imie)
-        </dd>
+                <dt class="col-sm-3">Data</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Data)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Zwierze.Imie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zwierze.Imie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-
-    </dl>
+                <dt class="col-sm-3">Opis</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Opis)</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            @Html.ActionLink("✏️ Edytuj", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning me-2" })
+            @Html.ActionLink("⬅️ Powrót do listy", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

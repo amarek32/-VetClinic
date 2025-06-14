@@ -4,59 +4,48 @@
     ViewBag.Title = "Dodaj wizytę";
 }
 
-<h2>Dodaj wizytę</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Szczegóły wizyty</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data, "Data wizyty", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Data, new { @class = "form-control", type = "date" })
-                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
-            </div>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">🩺 Nowa wizyta</h3>
         </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Opis, "Opis wizyty", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Data, "Data wizyty", new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Data, new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ZwierzeId, "Zwierzę", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ZwierzeId", null, "Wybierz zwierzę", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ZwierzeId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Opis, "Opis", new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.WeterynarzId, "Weterynarz", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("WeterynarzId", null, "Wybierz weterynarza", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.WeterynarzId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="mb-3">
+                    @Html.Label("Zwierzę", new { @class = "form-label" })
+                    @Html.DropDownList("ZwierzeId", null, "-- Wybierz zwierzę --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ZwierzeId, "", new { @class = "text-danger" })
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zapisz" class="btn btn-primary" />
-            </div>
+                <div class="mb-3">
+                    @Html.Label("Weterynarz", new { @class = "form-label" })
+                    @Html.DropDownList("WeterynarzId", null, "-- Wybierz weterynarza --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.WeterynarzId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success">💾 Zapisz</button>
+                    @Html.ActionLink("❌ Anuluj", "Index", null, new { @class = "btn btn-secondary ms-2" })
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Wróć do listy", "Index", null, new { @class = "btn btn-link" })
 </div>
 
 @section Scripts {

@@ -13,5 +13,7 @@ namespace Projekt.Models
         public DbSet<Weterynarz> Weterynarze { get; set; }
         public DbSet<Wizyta> Wizyty { get; set; }
         public DbSet<Leczenie> Leczenia { get; set; }
+
+        object placeHolderVariable;
     }
 }

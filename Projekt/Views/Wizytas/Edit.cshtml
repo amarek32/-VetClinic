@@ -1,64 +1,46 @@
 ﻿@model Projekt.Models.Wizyta
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edycja wizyty";
 }
 
-<h2>Edit</h2>
+<h2 class="text-center text-primary mb-4">Edytuj wizytę</h2>
 
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="card shadow-sm p-4 bg-light">
+            @Html.HiddenFor(model => model.Id)
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Wizyta</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Data, "Data wizyty")
                 @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Opis, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Opis, "Opis wizyty")
                 @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ZwierzeId, "ZwierzeId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ZwierzeId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="form-group">
+                @Html.Label("Zwierzę")
+                @Html.DropDownList("ZwierzeId", null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ZwierzeId, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.WeterynarzId, "WeterynarzId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("WeterynarzId", null, htmlAttributes: new { @class = "form-control" })
+            <div class="form-group">
+                @Html.Label("Weterynarz")
+                @Html.DropDownList("WeterynarzId", null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.WeterynarzId, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            <button type="submit" class="btn btn-success">Zapisz zmiany</button>
+            @Html.ActionLink("Anuluj", "Index", null, new { @class = "btn btn-secondary ml-2" })
         </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
 </div>
 
 @section Scripts {

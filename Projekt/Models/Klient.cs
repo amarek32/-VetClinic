@@ -18,7 +18,9 @@ namespace Projekt.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [Phone]
+        [Required]
+        [Display(Name = "Telefon")]
+        [RegularExpression(@"^\d{9}$", ErrorMessage = "Telefon musi składać się z dokładnie 9 cyfr.")]
         public string Telefon { get; set; }
 
         public virtual ICollection<Zwierze> Zwierzeta { get; set; }

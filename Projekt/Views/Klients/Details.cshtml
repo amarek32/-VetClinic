@@ -1,50 +1,32 @@
 ﻿@model Projekt.Models.Klient
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły klienta";
 }
 
-<h2>Details</h2>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Szczegóły klienta</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Imię</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Imie)</dd>
 
-<div>
-    <h4>Klient</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Imie)
-        </dt>
+                <dt class="col-sm-3">Nazwisko</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Nazwisko)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Imie)
-        </dd>
+                <dt class="col-sm-3">Adres e-mail</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nazwisko)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nazwisko)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefon)
-        </dd>
-
-    </dl>
+                <dt class="col-sm-3">Telefon</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Telefon)</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            @Html.ActionLink("✏️ Edytuj", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning me-2" })
+            @Html.ActionLink("⬅️ Powrót do listy", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Powrót do listy", "Index")
-</p>

@@ -4,35 +4,38 @@
     ViewBag.Title = "Zwierzęta";
 }
 
-<h2>Lista zwierząt</h2>
+<h2 class="text-center text-primary mt-4 mb-4">Lista zwierząt</h2>
 
 <p>
-    @Html.ActionLink("Dodaj nowe zwierzę", "Create")
+    @Html.ActionLink("Dodaj nowe zwierzę", "Create", null, new { @class = "btn btn-success mb-3" })
 </p>
 
-<table class="table">
-    <tr>
-        <th>Właściciel</th>
-        <th>Imię zwierzęcia</th>
-        <th>@Html.DisplayNameFor(model => model.Gatunek)</th>
-        <th>@Html.DisplayNameFor(model => model.Rasa)</th>
-        <th>@Html.DisplayNameFor(model => model.DataUrodzenia)</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-hover table-bordered">
+    <thead class="table-light">
         <tr>
-            <td>@item.Klient.Imie @item.Klient.Nazwisko</td>
-            <td>@item.Imie</td>
-            <td>@item.Gatunek</td>
-            <td>@item.Rasa</td>
-            <td>@item.DataUrodzenia.ToShortDateString()</td>
-            <td>
-                @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
-            </td>
+            <th>Właściciel</th>
+            <th>Imię</th>
+            <th>Gatunek</th>
+            <th>Rasa</th>
+            <th>Data urodzenia</th>
+            <th>Akcje</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Klient.Imie @item.Klient.Nazwisko</td>
+                <td>@item.Imie</td>
+                <td>@item.Gatunek</td>
+                <td>@item.Rasa</td>
+                <td>@item.DataUrodzenia.ToString("dd.MM.yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-sm btn-warning">✏️ Edytuj</a>
+                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-sm btn-info">🔍 Szczegóły</a>
+                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-sm btn-danger">🗑️ Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
